@@ -11,15 +11,26 @@
 </head>
 <body>
     <!-- template content -->
-     <main>
-        <section id="articles">
-            <div class="template-container">
-                <!-- content here -->
-                 <button class="btn__primary btn__articles--display-menu">
+    <main>
+    <section id="articles">
+        <div class="template__container">
+            <!-- content here -->
+                <button id="btn__article--display-menu" class="btn btn__primary" type="button">
                     Alle Kategorien
-                 </button>
-            </div>
-        </section>
-     </main>
+                </button>
+        </div>
+    </section>
+    </main>
+
+    <script type="module" defer>
+    import { fetchArticles } from './js/utility/index.js'
+
+    // load articles
+    const articles = await fetchArticles()
+
+    // createButtons
+
+    
+    </script>
 </body>
 </html>
