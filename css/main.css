@@ -1,4 +1,6 @@
+@import "./variables.css";
 @import "./layout/container.css";
+@import "./components/_buttons.css";
 /* import more styles here */
 
 /* application defaults */
@@ -18,14 +20,17 @@
   font-display: swap;
 }
 
-body, html {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 400;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {

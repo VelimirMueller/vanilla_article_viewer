@@ -1,8 +1,9 @@
-.btn {
-    border: 1px solid;
+.btn__primary {
+    background-color: var(--primary);
+    color: var(--primary-text);
 }
 
-.btn__articles--toggle {
+.btn__articles--display-menu {
     width: '195px';
     height: '77px';
 }
