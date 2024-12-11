@@ -15,12 +15,15 @@
   <section id="articles">
       <div class="template__container relative">
         <!-- content here -->
-        <button id="btn__article--display-menu" class="btn btn__primary" type="button">
+        <button id="article-toggle-button" class="btn btn__primary btn__article--display-menu" type="button">
             Alle Kategorien
         </button>
 
-        <div id="template__overlay">
-          Ich bin ein overlay
+        <!-- overlay wrapper -->
+        <div id="overlay" class="template__overlay">
+          <div class="template__overlay--wrapper">
+            Ich bin ein overlay
+          </div>
         </div>
       </div>
 
@@ -36,8 +39,8 @@
   
   // handle overlay
   const overlayHandler = handleOverlay(false)
-  document.getElementById('btn__article--display-menu').addEventListener('click', () => {
-    overlayHandler.toggleOverlay('template__overlay')
+  document.getElementById('article-toggle-button').addEventListener('click', () => {
+    overlayHandler.toggleOverlay('overlay')
   })
   
   
