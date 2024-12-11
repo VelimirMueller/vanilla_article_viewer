@@ -20,11 +20,11 @@ export const handleOverlay = (state) => {
          * @param {string} overlayId
          */
         toggleOverlay: (overlayId) => {
-            if (!isOverlayVisible) {
+            if (!!isOverlayVisible) {
                 document.getElementById(overlayId).style.display = 'none';
             } else {
-                document.getElementById(overlayId).style.display = 'block';
-            }
+                document.getElementById(overlayId).style.display = 'flex';
+            }0
 
             isOverlayVisible = !isOverlayVisible
         }
