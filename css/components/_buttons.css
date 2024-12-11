@@ -1,0 +1,8 @@
+.btn {
+    border: 1px solid;
+}
+
+.btn__articles--toggle {
+    width: '195px';
+    height: '77px';
+}

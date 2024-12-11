@@ -1,0 +1,14 @@
+services:
+  web:
+    image: nginx:alpine
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/usr/share/nginx/html  # Mount your project directory to Nginx's web directory
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
