@@ -6,3 +6,10 @@
     align-items: center;
     background-color: #fff;
 }
+
+#template__overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: hidden;
+}
