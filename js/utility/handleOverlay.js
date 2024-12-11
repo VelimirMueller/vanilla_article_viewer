@@ -1,6 +1,6 @@
 
 /**
- * Toggles the state of the overlay and hold the state of the overlay visibility.
+ * Toggles the state of the overlay and hold the visibility state in `isOverlayVisible`.
  * 
  * ---
  * Example usage:
@@ -16,7 +16,7 @@ export const handleOverlay = (state) => {
 
     return {
         /**
-         * Toggles the overlay
+         * Toggles the overlay by toggling the `isOverlayVisible` state
          * @param {string} overlayId
          */
         toggleOverlay: (overlayId) => {
