@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- meta -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probeaufgabe von Velimir Müller</title>
+  <!-- meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probeaufgabe von Velimir Müller</title>
 
-    <!-- styles and fonts -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+  <!-- styles and fonts -->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-    <!-- template content -->
-    <main>
-    <section id="articles">
-        <div class="template__container">
-            <!-- content here -->
-                <button id="btn__article--display-menu" class="btn btn__primary" type="button">
-                    Alle Kategorien
-                </button>
+  <!-- template content -->
+  <main>
+  <section id="articles">
+      <div class="template__container relative">
+        <!-- content here -->
+        <button id="btn__article--display-menu" class="btn btn__primary" type="button">
+            Alle Kategorien
+        </button>
+
+        <div id="template__overlay">
+          Ich bin ein overlay
         </div>
-    </section>
-    </main>
+      </div>
 
-    <script type="module" defer>
-    import { fetchArticles } from './js/utility/index.js'
+  </section>
+  </main>
 
-    // load articles
-    const articles = await fetchArticles()
+  <script type="module" defer>
+  import { fetchArticles, handleOverlay } from './js/utility/index.js'
 
-    // createButtons
-
-    
-    </script>
+  // fetch articles
+  const articlesData = await fetchArticles()
+  console.log(articlesData);
+  
+  // handle overlay
+  const overlayHandler = handleOverlay(false)
+  document.getElementById('btn__article--display-menu').addEventListener('click', () => {
+    overlayHandler.toggleOverlay('template__overlay')
+  })
+  
+  
+  </script>
 </body>
 </html>
