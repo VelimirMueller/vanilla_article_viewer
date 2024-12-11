@@ -1,9 +1,19 @@
+.btn {
+    border: none;
+}
+
+#btn__article--display-menu {
+    width: 195px;
+    height: 77px;
+    font-size: 1rem;
+}
+
+#btn__article--display-menu:active {
+    transition: transform 0.1s ease;
+    transform: translate(2px,2px);
+}
+
 .btn__primary {
     background-color: var(--primary);
     color: var(--primary-text);
-}
-
-.btn__articles--display-menu {
-    width: '195px';
-    height: '77px';
 }
