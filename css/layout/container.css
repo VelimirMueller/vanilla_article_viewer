@@ -7,9 +7,17 @@
     background-color: #fff;
 }
 
-#template__overlay {
+.template__overlay {
     position: absolute;
     height: 100vh;
     width: 100vw;
     display: none;
+}
+
+.template__overlay--wrapper {
+    position: absolute;
+    background-color: var(--bg-overlay);
+    height: 100vh;
+    width: 100vw;
+    display: grid;
 }
