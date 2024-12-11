@@ -1,0 +1,14 @@
+{
+    "articles": [
+       { "id": "1", "headline": "Karrierewege", "text": "text"},
+       { "id": "2", "headline": "Promotion", "text": "text"},
+       { "id": "3", "headline": "Habilitation", "text": "text"},
+       { "id": "4", "headline": "Juniorprofessor", "text": "text"},
+       { "id": "5", "headline": "Berufungsverfahren", "text": "text"},
+       { "id": "6", "headline": "Arbeitsplatz", "text": "text"},
+       { "id": "7", "headline": "Familie, Partnerschaft, Alltag", "text": "text"},
+       { "id": "8", "headline": "Mobilität", "text": "text"},
+       { "id": "9", "headline": "Blick aus dem Ausland", "text": "text"},
+       { "id": "10", "headline": "Allgemein", "text": "text"}
+    ]
+}
