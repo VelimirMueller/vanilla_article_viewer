@@ -11,28 +11,55 @@
 </head>
 <body>
   <!-- template content -->
-  <main>
-  <section id="articles">
+  <main role="main">
+    <section id="articles">
       <div class="template__container relative">
         <!-- content here -->
-        <button id="article-toggle-button" class="btn btn__primary btn__article--display-menu" type="button">
+        <button 
+          id="article-toggle-button" 
+          class="btn btn__primary btn__article--display-menu" 
+          type="button"
+          aria-expanded="false"
+          aria-controls="overlay">
             Alle Kategorien
         </button>
 
         <!-- overlay wrapper -->
-        <div id="overlay" class="template__overlay" aria-colapse="false">
+        <div 
+          id="overlay" 
+          class="template__overlay" 
+          aria-hidden="true">
           <div class="template__overlay--wrapper">
             <!-- articles content -->
-             <div class="template__overlay--content">
-                <aside id="article-s-menu" class="template__overlay--articles-menu">
-                  <div id="article-button-container" class="full-space grid">
+             <div 
+              class="template__overlay--content"
+              aria-label="Article display and menu">
+                <aside 
+                  id="article-s-menu" 
+                  class="template__overlay--articles-menu"
+                  aria-labelledby="article-toggle-button"
+                  aria-live="polite">
+                  <div 
+                    id="article-button-container" 
+                    class="full-space grid">
                     <!-- create buttons with event listeners dynamically and render them here -->
                   </div>
                 </aside>
-                <article id="displayed-article" class="template__overlay--article">
+                <article 
+                  id="displayed-article" 
+                  class="template__overlay--article"
+                  aria-labelledby="article-headline">
                   <div class="padding-article">
-                    <h1 id="article-headline" class="text__article--article-headline">Headline</h1>
-                    <p id="article-paragraph" class="text__article--article-paragraph">text</p>
+                    <h1 
+                      id="article-headline" 
+                      class="text__article--article-headline">
+                      <!-- dynamic article headline content -->
+                    </h1>
+                    <p 
+                      id="article-paragraph" 
+                      class="text__article--article-paragraph">
+                      <!-- dynamic article paragraph content -->
+                    </p>
                   </div>
                 </article>
              </div>
@@ -40,11 +67,16 @@
         </div>
       </div>
 
-  </section>
+    </section>
   </main>
 
   <script type="module" defer>
-  import { addEventListeners, createArticleButtons, fetchArticles, handleOverlay } from './js/index.js'
+  import { 
+    addEventListeners, 
+    createArticleButtons, 
+    fetchArticles, 
+    handleOverlay 
+  } from './js/index.js'
 
   // fetch articles
   const articlesData = await fetchArticles()
@@ -52,12 +84,16 @@
   
   // handle overlay
   const overlayHandler = handleOverlay(false)
-  document.getElementById('article-toggle-button').addEventListener('click', () => {
-    overlayHandler.toggleOverlay('overlay')
+  document.getElementById('article-toggle-button').addEventListener('click', async () => {
+    await overlayHandler.toggleOverlay('overlay', document.getElementById('article-toggle-button'))
+
+    // default => set first article of articles
+    const htmlCollection = document.getElementsByClassName('btn__secondary--article')
+    htmlCollection[0].focus()
   })
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
-  createArticleButtons('article-button-container', articlesData.articles, 'article-headline', 'article-paragraph')
+  createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article')
   addEventListeners('btn__secondary--article', articlesData.articles, 'article-headline', 'article-paragraph')
   
   </script>
