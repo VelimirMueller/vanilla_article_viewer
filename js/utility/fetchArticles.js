@@ -11,9 +11,7 @@ export const fetchArticles = async () => {
             throw new Error(`Oooops! Something went wrong loading the local file. status: ${response.status} text: ${response.statusText}`)
         }
 
-        const data = response.json()
-
-        return data
+        return response.json()
     } catch (err) {
         throw new Error(`Error while loading data. error: ${err}`)
     }
