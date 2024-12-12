@@ -1,5 +1,5 @@
 /**
- * Fetches articles data
+ * Fetches articles data from local articles.json file
  * @returns Promise
  */
 export const fetchArticles = async () => {
