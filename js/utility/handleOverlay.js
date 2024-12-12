@@ -20,11 +20,17 @@ export const handleOverlay = (state) => {
          * @param {string} overlayId
          */
         toggleOverlay: (overlayId) => {
-            if (!!isOverlayVisible) {
-                document.getElementById(overlayId).style.display = 'none';
-            } else {
-                document.getElementById(overlayId).style.display = 'flex';
-            }0
+            const overlayElement = document.getElementById(overlayId)
+            
+            if (!overlayElement || overlayElement === null) {
+                throw new Error(`Can't find overlay to toggle with provided overlay id: ${overlayId}`)
+            }
+
+            if (isOverlayVisible && overlayElement && overlayElement !== null) {
+                overlayElement.style.display = 'none';
+            } else if (document.getElementById(overlayId) !== null) {
+                overlayElement.style.display = 'flex';
+            }
 
             isOverlayVisible = !isOverlayVisible
         }
