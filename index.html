@@ -33,6 +33,7 @@
             <!-- articles content -->
              <div 
               class="template__overlay--content"
+              role="region"
               aria-label="Article display and menu">
                 <aside 
                   id="article-s-menu" 
@@ -52,13 +53,17 @@
                   <div class="padding-article">
                     <h1 
                       id="article-headline" 
-                      class="text__article--article-headline">
-                      <!-- dynamic article headline content -->
+                      class="text__article--article-headline"
+                      aria-live="polite">
+                      <!-- dynamic article headline content will override placeholder -->
+                       placeholder
                     </h1>
                     <p 
                       id="article-paragraph" 
-                      class="text__article--article-paragraph">
-                      <!-- dynamic article paragraph content -->
+                      class="text__article--article-paragraph"
+                      aria-live="polite">
+                      <!-- dynamic article paragraph content will override placeholder -->
+                       placeholder
                     </p>
                   </div>
                 </article>
@@ -80,15 +85,16 @@
 
   // fetch articles
   const articlesData = await fetchArticles()
-  
+  const htmlCollection = document.getElementsByClassName('btn__secondary--article')
+
   // handle overlay
   const overlayHandler = handleOverlay(false)
   document.getElementById('article-toggle-button').addEventListener('click', async () => {
     await overlayHandler.toggleOverlay('overlay', document.getElementById('article-toggle-button'))
-
-    // default => set first article of articles
-    const htmlCollection = document.getElementsByClassName('btn__secondary--article')
-    htmlCollection[0].focus()
+    if (overlayHandler.getState()) {
+      // default => set first article of articles
+      htmlCollection[0].focus()
+    }
   })
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
