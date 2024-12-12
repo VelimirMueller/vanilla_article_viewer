@@ -10,12 +10,12 @@
  * `const overlayHandler = handleOverlay(false)`
  * 
  * - toggle overlay:
- * `overlayHandler.toggleOverlay('template__overlay')`
+ * `overlayHandler.toggleOverlay('template__overlay', htmlButtonElement)`
  * @param { string } state
  */
-export const handleOverlay = (state) => {
+export const handleOverlay = () => {
     // initialize state of overlay
-    let isOverlayVisible = state
+    let isOverlayVisible = false
 
     return {
         /**

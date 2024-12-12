@@ -1,6 +1,6 @@
 /**
  * ### Creates article buttons dynamically
- * ---
+ * ____
  * By creating buttons in memory first, the index.html markup will remain
  * relatively short and the buttons contain all relevat data right away.
  * 

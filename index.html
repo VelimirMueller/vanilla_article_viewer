@@ -108,8 +108,8 @@
   const articlesData = await fetchArticles()
   const htmlCollection = document.getElementsByClassName('btn__secondary--article')
 
-  // handle overlay
-  const overlayHandler = handleOverlay(false)
+  // initializes handleOverlay
+  const overlayHandler = handleOverlay()
   document.getElementById('article-toggle-button').addEventListener('click', async () => {
     await overlayHandler.toggleOverlay('overlay', document.getElementById('article-toggle-button'))
     if (overlayHandler.getState()) {

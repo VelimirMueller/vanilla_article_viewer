@@ -1,6 +1,6 @@
 /**
  * Attaches event listeners to article buttons.
- * ---
+ * ____
  * To ensure the correct article text and headline will be displayed within the article wrapper 
  * on all kinds of devices, several event types need to be attached to the article buttons.
  * To achieve this, an HTMLCollection will be created by providing a className as parameter to this function. 
