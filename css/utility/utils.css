@@ -1,0 +1,18 @@
+.full-space {
+    width: 100%;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)!important;
+    grid-gap: 10px;
+}
+
+.padding-article {
+    padding: 20px;
+}
