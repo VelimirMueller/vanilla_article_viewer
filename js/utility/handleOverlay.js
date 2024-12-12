@@ -12,6 +12,7 @@
  * @param { string } state
  */
 export const handleOverlay = (state) => {
+    // initialize state of overlay
     let isOverlayVisible = state
 
     return {
@@ -21,7 +22,8 @@ export const handleOverlay = (state) => {
          */
         toggleOverlay: (overlayId) => {
             const overlayElement = document.getElementById(overlayId)
-            
+
+            // throw error if overlay id is wrong
             if (!overlayElement || overlayElement === null) {
                 throw new Error(`Can't find overlay to toggle with provided overlay id: ${overlayId}`)
             }
@@ -31,7 +33,8 @@ export const handleOverlay = (state) => {
             } else if (document.getElementById(overlayId) !== null) {
                 overlayElement.style.display = 'flex';
             }
-
+            
+            // Toggle the state within the outer function's scope
             isOverlayVisible = !isOverlayVisible
         }
     }   
