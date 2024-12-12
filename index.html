@@ -20,9 +20,22 @@
         </button>
 
         <!-- overlay wrapper -->
-        <div id="overlay" class="template__overlay">
+        <div id="overlay" class="template__overlay" aria-colapse="false">
           <div class="template__overlay--wrapper">
-            Ich bin ein overlay
+            <!-- articles content -->
+             <div class="template__overlay--content">
+                <aside id="article-s-menu" class="template__overlay--articles-menu">
+                  <div id="article-button-container" class="full-space grid">
+                    <!-- create buttons with event listeners dynamically and render them here -->
+                  </div>
+                </aside>
+                <article id="displayed-article" class="template__overlay--article">
+                  <div class="padding-article">
+                    <h1 id="article-headline" class="text__article--article-headline">Headline</h1>
+                    <p id="article-paragraph" class="text__article--article-paragraph">text</p>
+                  </div>
+                </article>
+             </div>
           </div>
         </div>
       </div>
@@ -31,18 +44,21 @@
   </main>
 
   <script type="module" defer>
-  import { fetchArticles, handleOverlay } from './js/utility/index.js'
+  import { addEventListeners, createArticleButtons, fetchArticles, handleOverlay } from './js/index.js'
 
   // fetch articles
   const articlesData = await fetchArticles()
-  console.log(articlesData);
+  console.log(articlesData)
   
   // handle overlay
   const overlayHandler = handleOverlay(false)
   document.getElementById('article-toggle-button').addEventListener('click', () => {
     overlayHandler.toggleOverlay('overlay')
   })
-  
+
+  // create buttons and add them to DOM (just one DOM update for all buttons)
+  createArticleButtons('article-button-container', articlesData.articles, 'article-headline', 'article-paragraph')
+  addEventListeners('btn__secondary--article', articlesData.articles, 'article-headline', 'article-paragraph')
   
   </script>
 </body>
