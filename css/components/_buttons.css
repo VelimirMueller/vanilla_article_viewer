@@ -1,19 +1,50 @@
 .btn {
     border: none;
-}
-
-.btn__article--display-menu {
-    width: 195px;
-    height: 77px;
     font-size: 1rem;
 }
 
-.btn__article--display-menu:active {
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
     transition: transform 0.1s ease;
     transform: translate(2px,2px);
 }
 
 .btn__primary {
     background-color: var(--primary);
-    color: var(--primary-text);
+    color: var(--secodary);
+}
+
+.btn__secondary {
+    background-color: var(--secondary);
+    color: var(--primary);
+    display: flex;
+}
+
+.btn__article--display-menu {
+    width: 195px;
+    height: 77px;
+}
+
+.btn__secondary--article {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.btn__secondary--article:focus {
+    background-color: var(--primary);
+    color: var(--secondary);
+    transition: backgroundColor, color, 0.1s ease-in-out;
+    border: none;
+    outline: none;
+}
+
+.btn__secondary--article:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+    transition: all 200ms linear;
 }
