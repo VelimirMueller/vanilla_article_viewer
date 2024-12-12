@@ -14,6 +14,7 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
   // add event listener to article buttons
   const htmlCollection = document.getElementsByClassName(className)
   const eventNames = ['focus', 'mouseover', 'click'] // make sure keyboard navigation renders the corrrect text
+  
   try {
     if (htmlCollection.length && htmlCollection !== null) {
       for (let i=0; i<articles.length; i++) {
