@@ -1,6 +1,5 @@
 .btn {
   border: none;
-  font-size: 1rem;
 }
 
 .btn:hover {
@@ -21,6 +20,12 @@
   background-color: var(--secondary);
   color: var(--primary);
   display: flex;
+}
+
+.btn__close {
+  background: var(--secondary);
+  color: var(--primary);
+  border-radius: 10px;
 }
 
 .btn__article--display-menu {
