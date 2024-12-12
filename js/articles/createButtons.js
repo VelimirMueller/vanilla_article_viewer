@@ -20,6 +20,7 @@ export const createArticleButtons = (buttonContainerId, articles, btnClassList) 
       // create article buttons and add attributes
       articles.forEach(article => {
         const button = document.createElement("button")
+        
         button.id = `${article.id}`
         button.textContent = article.headline
         button.type = 'button'
