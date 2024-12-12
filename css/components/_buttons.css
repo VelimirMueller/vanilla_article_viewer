@@ -1,50 +1,54 @@
 .btn {
-    border: none;
-    font-size: 1rem;
+  border: none;
+  font-size: 1rem;
 }
 
 .btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .btn:active {
-    transition: transform 0.1s ease;
-    transform: translate(2px,2px);
+  transition: transform 0.1s ease;
+  transform: translate(2px,2px);
 }
 
 .btn__primary {
-    background-color: var(--primary);
-    color: var(--secodary);
+  background-color: var(--primary);
+  color: var(--secondary);
 }
 
 .btn__secondary {
-    background-color: var(--secondary);
-    color: var(--primary);
-    display: flex;
+  background-color: var(--secondary);
+  color: var(--primary);
+  display: flex;
 }
 
 .btn__article--display-menu {
-    width: 195px;
-    height: 77px;
+  background-color: var(--action-button);
+  color: var(--secondary);
+  width: 250px;
+  height: 110px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .btn__secondary--article {
-    width: 100%;
-    height: 100%;
-    padding: 0.5rem;
-    font-weight: bold;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  font-weight: bold;
 }
 
 .btn__secondary--article:focus {
-    background-color: var(--primary);
-    color: var(--secondary);
-    transition: backgroundColor, color, 0.1s ease-in-out;
-    border: none;
-    outline: none;
+  background-color: var(--primary);
+  color: var(--secondary);
+  transition: backgroundColor, color, 0.1s ease-in-out;
+  border: none;
+  outline: none;
 }
 
 .btn__secondary--article:hover {
-    background-color: var(--primary);
-    color: var(--secondary);
-    transition: all 200ms linear;
+  background-color: var(--primary);
+  color: var(--secondary);
+  transition: all 200ms linear;
 }

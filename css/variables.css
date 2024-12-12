@@ -1,5 +1,12 @@
+/*
+ * The primary color of the design tempalte `#00A5E2` was problematic 
+ * since his created an unfavourable conrast ratio of 2.7:1 with white 
+ * text. Same with #0096CE for the action button. Thats why slightly darker
+ * colors have been used here to ensure a proper contrast. 
+*/
 :root {
-    --primary: #00a6e3;
-    --secondary: #fff;
-    --bg-overlay: #7f8e93be;
-  }
+  --action-button: #037FAD;
+  --primary: #0083b3;
+  --secondary: #fff;
+  --bg-overlay: #bfc6c9;
+}

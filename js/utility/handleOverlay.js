@@ -41,6 +41,11 @@ export const handleOverlay = (state) => {
             
             // Toggle the state within the outer function's scope
             isOverlayVisible = !isOverlayVisible
+        },
+        
+        // getter to check check state from the outside
+        getState: () => {
+            return isOverlayVisible
         }
     }   
 }

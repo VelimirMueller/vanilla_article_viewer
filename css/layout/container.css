@@ -1,56 +1,56 @@
 .template__container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
 }
 
 .template__overlay {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    display: none;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: none;
 }
 
 /* add padding accordingly to absolute overlay wrapper */
 .template__overlay--wrapper {
-    background-color: var(--bg-overlay);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10%;
+  background-color: var(--bg-overlay);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
 }
 
 /* add 12 grid column layout to overlay content */
 .template__overlay--content {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 10px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
 }
 
 /* article side menu should take 4 of 12 grid columns */
 .template__overlay--articles-menu {
-    grid-column: 1 / span 4;
-    grid-template-columns: repeat(2, 1fr)!important;
+  grid-column: 1 / span 4;
+  grid-template-columns: repeat(2, 1fr)!important;
 }
 
 /* article should take 8 of 12 grid columns */
 .template__overlay--article {
-    grid-column: 5 / span 8;
-    background-color: var(--primary);
-    color: var(--secondary);
-    overflow: auto;
+  grid-column: 5 / span 8;
+  background-color: var(--primary);
+  color: var(--secondary);
+  overflow: auto;
 }
 
 .template__overlay--button-list {
-    width: 100%;
-    height: 100%;
-    grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
 }

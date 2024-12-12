@@ -13,11 +13,11 @@
   <!-- template content -->
   <main role="main">
     <section id="articles">
-      <div class="template__container relative">
+      <div class="template__container">
         <!-- content here -->
         <button 
           id="article-toggle-button" 
-          class="btn btn__primary btn__article--display-menu" 
+          class="btn btn__article--display-menu" 
           type="button"
           aria-expanded="false"
           aria-controls="overlay">
@@ -38,8 +38,7 @@
                 <aside 
                   id="article-s-menu" 
                   class="template__overlay--articles-menu"
-                  aria-labelledby="article-toggle-button"
-                  aria-live="polite">
+                  aria-labelledby="article-toggle-button">
                   <div 
                     id="article-button-container" 
                     class="full-space grid">
@@ -77,7 +76,7 @@
 
   <script type="module" defer>
   import { 
-    addEventListeners, 
+    addArticleButtonEventListeners, 
     createArticleButtons, 
     fetchArticles, 
     handleOverlay 
@@ -99,7 +98,7 @@
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
   createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article')
-  addEventListeners('btn__secondary--article', articlesData.articles, 'article-headline', 'article-paragraph')
+  addArticleButtonEventListeners('btn__secondary--article', articlesData.articles, 'article-headline', 'article-paragraph')
   
   </script>
 </body>
