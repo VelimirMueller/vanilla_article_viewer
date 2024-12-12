@@ -19,6 +19,7 @@
           id="article-toggle-button" 
           class="btn btn__article--display-menu" 
           type="button"
+          aria-label="Toggle article categories menu"
           aria-expanded="false"
           aria-controls="overlay">
             Alle Kategorien
@@ -30,9 +31,14 @@
           aria-hidden="true">
           <div class="template__overlay--wrapper">
             <!-- articles content -->
-            <button 
-              class="btn btn__blank font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
-              &#x274c
+            <button
+              id="article-toggle-button-overlay" 
+              type="button"
+              aria-controls="overlay"
+              aria-expanded="false"
+              aria-label="Toggle article categories menu"
+              class="btn btn__close font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
+              <icon aria-hidden="true">&#x274c</icon>
             </button>
              <div 
               class="template__overlay--content"
