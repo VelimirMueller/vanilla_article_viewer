@@ -1,22 +1,22 @@
 @import "./variables.css";
+@import "./utility/utils.css";
 @import "./layout/container.css";
 @import "./components/_buttons.css";
+@import "./components/_texts.css";
 /* import more styles here */
 
 /* application defaults */
 @font-face {
   font-family: 'Roboto';
-  src: url('../fonts/roboto-regular.woff2') format('woff2');
+  src: url('../fonts/Roboto-Bold.ttf') format('ttf');
   font-weight: 400;
-  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../fonts/roboto-bold.woff2') format('woff2');
+  src: url('../fonts/Roboto-Regular.ttf') format('ttf');
   font-weight: 700;
-  font-style: normal;
   font-display: swap;
 }
 
