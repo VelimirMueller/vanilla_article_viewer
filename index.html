@@ -20,7 +20,7 @@
           class="btn btn__article--display-menu" 
           type="button"
           aria-label="Toggle article categories menu"
-          aria-expanded="false"
+          aria-pressed="false"
           aria-controls="overlay">
             Alle Kategorien
         </button>
@@ -35,7 +35,7 @@
               id="article-toggle-button-overlay" 
               type="button"
               aria-controls="overlay"
-              aria-expanded="false"
+              aria-pressed="false"
               aria-label="Toggle article categories menu"
               class="btn btn__close font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
               <icon aria-hidden="true">&#x274c</icon>
@@ -52,6 +52,12 @@
                     id="article-button-container" 
                     class="full-space grid">
                     <!-- create buttons with event listeners dynamically and render them here -->
+                    <!-- 
+                      I decided to create the buttons dynamically instead of writing direct markup for them
+                      I did not want to sacrifice the developer experience for it since I was pretty sure the 
+                      performance will still be good if all the buttons will be created in the memory as fragments 
+                      first, and added directly to the DOM after that with only 1 DOM update.
+                    -->
                   </div>
                 </aside>
                 <article 
@@ -83,6 +89,13 @@
     </section>
   </main>
 
+  <!-- 
+    Javascript as module to keep the project structure tidy.
+    Since the lighthouse performance tests was already at 100%,
+    there was no need to further improve the performance by writing 
+    all javascript directly in the `index.hmtl` instead of separated
+    files.
+  -->
   <script type="module" defer>
   import { 
     addArticleButtonEventListeners, 
