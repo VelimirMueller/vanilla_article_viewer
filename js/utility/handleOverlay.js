@@ -1,17 +1,21 @@
 
 /**
- * Toggles the state of the overlay and hold the visibility state in `isOverlayVisible`.
+ * ### Toggles the state of the overlay and hold the visibility state in `isOverlayVisible`.
  * Also handles `aria-pressed` and `aria-hidden` attributes for the overlay element
  * and for both overlay toggle buttons.
  * 
- * ---
+ * ____
  * Example usage:
  * - initialize handler:
  * `const overlayHandler = handleOverlay(false)`
  * 
- * - toggle overlay:
+ * - toggleOverlay():
  * `overlayHandler.toggleOverlay('template__overlay', htmlButtonElement)`
- * @param { string } state
+ * 
+ * * - getState():
+ * `const isOverlay = overlayHandler.getState()`
+ *  @returns {Function} toggleOverlay()
+ *  @returns {Function} getState()
  */
 export const handleOverlay = () => {
     // initialize state of overlay
@@ -19,7 +23,8 @@ export const handleOverlay = () => {
 
     return {
         /**
-         * Toggles the overlay by toggling the `isOverlayVisible` state
+         * #### Toggles the overlay by toggling the `isOverlayVisible` state
+         * ____
          * @param {string} overlayId
          * @param {HTMLElement} toggleButton
          */

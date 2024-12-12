@@ -1,5 +1,5 @@
 /**
- * Fetches articles data from local articles.json file
+ * ### Fetches articles data from local articles.json file
  * ___
  * @returns Promise
  */
