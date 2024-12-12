@@ -11,7 +11,7 @@
  * @param {string} headlineTargetId 
  * @param {string} paragraphTargetId 
  */
-export const createArticleButtons = (buttonContainerId, articles) => {
+export const createArticleButtons = (buttonContainerId, articles, btnClassList) => {
     try{
       const buttonContainer = document.getElementById(buttonContainerId)
       // initialize document fragment which will be added to the DOM later
@@ -23,7 +23,8 @@ export const createArticleButtons = (buttonContainerId, articles) => {
         const button = document.createElement("button")
         button.id = `${article.id}`
         button.textContent = article.headline
-        button.classList = 'btn btn__secondary btn__secondary--article'
+        button.type = 'button'
+        button.classList = btnClassList
         
         // add button to fragments
         fragments.appendChild(button)
