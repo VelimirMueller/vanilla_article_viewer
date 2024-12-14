@@ -1,4 +1,3 @@
-
 /**
  * ### Toggles the state of the overlay and hold the visibility state in `isOverlayVisible`.
  * Also handles `aria-pressed` and `aria-hidden` attributes for the overlay element
@@ -28,7 +27,7 @@ export const handleOverlay = () => {
          * @param {string} overlayId
          * @param {HTMLElement} toggleButton
          */
-        toggleOverlay: async (overlayId, toggleButton) => {
+        toggleOverlay: async (overlayId) => {
             const overlayElement = document.getElementById(overlayId) 
             // throw error if overlay id is wrong
             if (!overlayElement || overlayElement === null) {
@@ -36,7 +35,7 @@ export const handleOverlay = () => {
             }
             
             // Toggle visibility and set aria-hidden attribute accordingly on overlay visibility
-            toggleVisibility(overlayId, isOverlayVisible, overlayElement, toggleButton)
+            toggleVisibility(overlayId, isOverlayVisible, overlayElement)
             
             // Toggle the state within the outer function's scope
             isOverlayVisible = !isOverlayVisible
@@ -57,13 +56,15 @@ export const handleOverlay = () => {
  * @param {HTMLElement} overlayElement 
  * @param {HTMLElement} toggleButton 
  */
-const toggleVisibility = (overlayId, isOverlayVisible, overlayElement, toggleButton) => {
+const toggleVisibility = (overlayId, isOverlayVisible, overlayElement) => {
   if (isOverlayVisible && overlayElement && overlayElement !== null) {
-    setVisible(overlayElement, toggleButton)
+    setInvisible(overlayElement)
   } else if (document.getElementById(overlayId) !== null) {
-    setInvisible(overlayElement, toggleButton)
+    setVisible(overlayElement)
   }
 }
+
+const showButton = document.getElementById('article-show-button')
 
 /**
  * Helper function to set visibility from `display:flex` to 
@@ -73,10 +74,14 @@ const toggleVisibility = (overlayId, isOverlayVisible, overlayElement, toggleBut
  * @param {HTMLElement} overlay 
  * @param {HTMLElement} button 
  */
-const setVisible = (overlay, button) => {
-  overlay.setAttribute('aria-hidden', 'true')
-  button.setAttribute('aria-pressed', 'false')
-  overlay.style.display = 'none'
+const setInvisible = (overlay) => {
+  try {
+    overlay.style.display = 'none'
+    showButton.setAttribute('tabindex', '0')
+  }
+  catch (err) {
+    throw new Error(`Something went wrong while setting overlay to visible. error: ${err}`)
+  }
 }
 
 /**
@@ -87,8 +92,15 @@ const setVisible = (overlay, button) => {
  * @param {HTMLElement} overlay 
  * @param {HTMLElement} button 
  */
-const setInvisible = (overlay, button) => {
-  overlay.setAttribute('aria-hidden', 'false')
-  button.setAttribute('aria-pressed', 'true')
-  overlay.style.display = 'flex'
+const setVisible = (overlay) => {
+  try {
+    const highlightButton = document.getElementsByClassName('btn__secondary--article')[0]
+    
+    showButton.blur()
+    showButton.setAttribute('tabindex', '-1')
+    overlay.style.display = 'flex'
+    highlightButton.focus()
+  } catch (err) {
+    throw new Error(`Something went wrong while setting overlay to visible. error: ${err}`)
+  }
 }
