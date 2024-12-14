@@ -24,7 +24,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10%;
+  padding: 10% 20%;
+  position: relative;
 }
 
 /* add 12 grid column layout to overlay content */
@@ -48,6 +49,7 @@
   background-color: var(--primary);
   color: var(--secondary);
   overflow: auto;
+  position: relative;
 }
 
 .template__overlay--button-list {
