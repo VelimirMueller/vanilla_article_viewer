@@ -30,7 +30,18 @@
 .btn__close { /* close button has a background to make sure the contrast is of minimal ratio of 4.5:1  */
   background: var(--secondary);
   color: var(--primary);
-  border-radius: 10px;
+  position: absolute;
+  top: 12.5%;
+  right: 19%;
+  transition: border-radius, background-color 0.3s ease-out;
+}
+
+.btn__close:hover { 
+  background: var(--primary);
+  color: var(--secondary);
+  position: absolute;
+  top: 12.5%;
+  right: 19%;
 }
 
 .btn__article--display-menu {
@@ -38,15 +49,21 @@
   color: var(--secondary);
   width: 250px;
   height: 110px;
+  outline: solid 10px var(--secondary);
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.btn__article--display-menu:hover {
+  text-decoration: underline;
 }
 
 .btn__secondary--article {
   width: 100%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   font-weight: bold;
+  text-align: left;
 }
 
 .btn__secondary--article:focus {
