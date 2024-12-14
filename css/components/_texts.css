@@ -1,8 +1,19 @@
 .text__article--article-headline {
-  font-size: 1.7rem!important;
+  font-size: 1.85rem!important;
 }
 
 .text__article--article-paragraph {
-  margin-top: 0.3rem;;
-  font-size: 1.35rem!important;
+  margin-top: 0.4rem;
+  font-size: 1.4rem!important;
+  padding-top: 10px;
+  padding-right: 50px;
+  overflow-x: hidden;
+}
+
+.text__underline--hover:hover {
+  text-decoration: underline;
+}
+
+.texts__close-button--colors {
+  color: var(--secondary);
 }
