@@ -51,3 +51,8 @@
   width: 45px;
   height: 45px;
 }
+
+.white {
+  background-color: none;
+  color: #fff;
+}
