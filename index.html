@@ -4,7 +4,9 @@
   <!-- meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Probeaufgabe von Velimir Müller</title>
+  <meta name="keywords" content="HTML, CSS, JavaScript, Bewerbung, Velimir, Müller, 3PC, Vanilla JS, Artikel, Barrierefreiheit, Performance, Webanwendung, Clean Code">
+  <meta name="description" content="3PC Probearbeit von Author: Velimir Müller | 2024 | MIT License.">
+  <title>3PC Probearbeit von Velimir Müller</title>
 
   <!-- styles and fonts -->
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -16,76 +18,68 @@
       <div class="template__container">
         <!-- content here -->
         <button 
-          id="article-toggle-button" 
+          id="article-show-button" 
           class="btn btn__article--display-menu" 
           type="button"
-          aria-label="Toggle article categories menu"
-          aria-pressed="false"
+          aria-label="Zeige alle Artikel"
           aria-controls="overlay">
             Alle Kategorien
         </button>
         <!-- overlay wrapper -->
         <div 
-          id="overlay" 
-          class="template__overlay" 
-          aria-hidden="true">
-          <div class="template__overlay--wrapper">
-            <!-- articles content -->
+          id="overlay"
+          class="template__overlay" >
+          <div  
+            class="template__overlay--wrapper">
             <button
-              id="article-toggle-button-overlay" 
+              id="article-close-button" 
               type="button"
+              tabindex="1"
               aria-controls="overlay"
-              aria-pressed="false"
-              aria-label="Toggle article categories menu"
+              aria-label="Artikelmenü schließen"
               class="btn btn__close font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
-              <icon aria-hidden="true">&#x274c</icon>
+              X
             </button>
-             <div 
-              class="template__overlay--content"
-              role="region"
-              aria-label="Article display and menu">
-                <aside 
-                  id="article-s-menu" 
-                  class="template__overlay--articles-menu"
-                  aria-labelledby="article-toggle-button">
-                  <div 
-                    id="article-button-container" 
-                    class="full-space grid">
-                    <!-- create buttons with event listeners dynamically and render them here -->
-                    <!-- 
-                      I decided to create the buttons dynamically instead of writing direct markup for them
-                      I did not want to sacrifice the developer experience for it since I was pretty sure the 
-                      performance will still be good if all the buttons will be created in the memory as fragments 
-                      first, and added directly to the DOM after that with only 1 DOM update.
-                    -->
-                  </div>
-                </aside>
-                <article 
-                  id="displayed-article" 
-                  class="template__overlay--article"
-                  aria-labelledby="article-headline">
-                  <div class="padding-article">
-                    <h1 
-                      id="article-headline" 
-                      class="text__article--article-headline"
-                      aria-live="polite">
-                      <!-- dynamic article headline content will override placeholder -->
-                       HEADLINE-PLACEHOLDER
-                    </h1>
-                    <p 
-                      id="article-paragraph" 
-                      class="text__article--article-paragraph"
-                      aria-live="polite">
-                      <!-- dynamic article paragraph content will override placeholder -->
-                       PARAGRAPH-PLACEHOLDER
-                    </p>
-                  </div>
-                </article>
+            <!-- articles content -->
+            <div class="template__overlay--content">
+              <aside
+                id="articles-menu" 
+                class="template__overlay--articles-menu">
+                <div 
+                  id="article-button-container"
+                  role="menu"
+                  class="full-space grid">
+                  <!-- create buttons with event listeners dynamically and render them here -->
+                  <!-- 
+                    I decided to create the buttons dynamically instead of writing direct markup for them
+                    I did not want to sacrifice the developer experience for it since I was pretty sure the 
+                    performance will still be good if all the buttons will be created in the memory as fragments 
+                    first, and added directly to the DOM after that with only 1 DOM update.
+                  -->
+                </div>
+              </aside>
+              <article 
+                id="displayed-article"
+                class="template__overlay--article">
+                <div class="padding-article">
+                  <h1
+                    id="article-headline"
+                    class="text__article--article-headline">
+                    <!-- dynamic article headline content will override placeholder -->
+                      Bitte Artikel auswählen.
+                  </h1>
+                  <hr>
+                  <p 
+                    id="article-paragraph" 
+                    class="text__article--article-paragraph scroller">
+                    <!-- dynamic article paragraph content will override placeholder -->
+                  </p>
+                </div>
+              </article>
              </div>
           </div>
         </div>
       </div>
-
     </section>
   </main>
 
@@ -98,30 +92,50 @@
   -->
   <script type="module" defer>
   import { 
-    addArticleButtonEventListeners, 
+    addArticleButtonEventListeners,
+    closeOnEscape,
     createArticleButtons, 
-    fetchArticles, 
-    handleOverlay 
+    fetchArticles,
+    handleAriaStates,
+    handleOverlay,
+    preventHiddenShowButtonToBeFocused
   } from './js/index.js'
 
   // fetch articles
   const articlesData = await fetchArticles()
-  const htmlCollection = document.getElementsByClassName('btn__secondary--article')
-
+  
   // initializes handleOverlay
   const overlayHandler = handleOverlay()
-  document.getElementById('article-toggle-button').addEventListener('click', async () => {
-    await overlayHandler.toggleOverlay('overlay', document.getElementById('article-toggle-button'))
-    if (overlayHandler.getState()) {
-      // default => set first article of articles
-      htmlCollection[0].focus()
-    }
-  })
+  
+  const showButton = document.getElementById('article-show-button')
+  const closeButton = document.getElementById('article-close-button')
+
+  // Set dynamic aria attributes when the overlay is shown
+  const showAttributes = [
+    { component: showButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'false' }, { ariaAttr: 'aria-inert', ariaValue: 'false' }] },
+    { component: closeButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'false' }] }
+  ]
+  
+  // Set dynamic aria attributes when the overlay is hidden
+  const hideAttributes = [
+    { component: showButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'true' }, { ariaAttr: 'aria-inert', ariaValue: 'true' }] },
+    { component: closeButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'true' }] }
+  ]
+
+  // Handle dynamic aria attributes for close and show button
+  handleAriaStates(overlayHandler, showButton, showAttributes)
+  handleAriaStates(overlayHandler, closeButton, hideAttributes)
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
-  createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article')
+  createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article text__underline--hover')
+
+  // Add event based logic to article buttons
   addArticleButtonEventListeners('btn__secondary--article', articlesData.articles, 'article-headline', 'article-paragraph')
-  
+
+  // makes article show button not focusable and focus first article button when overlay is shown
+  const firstArticleButton = document.getElementsByClassName('btn__secondary--article')[0]
+  preventHiddenShowButtonToBeFocused(overlayHandler, showButton, firstArticleButton)
+  closeOnEscape(closeButton)
   </script>
 </body>
 </html>
