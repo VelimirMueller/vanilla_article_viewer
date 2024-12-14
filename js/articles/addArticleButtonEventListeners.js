@@ -20,6 +20,7 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
       for (let i=0; i<articles.length; i++) {
         eventNames.forEach(evtName => {
           htmlCollection[i].addEventListener(evtName, () => {
+            const { headline, text } = articles[i]
               /**
                * Focus hovered element and set headline and text for article wrapper.
                * This ensures that the hovered last item remains in a visually active state.
@@ -27,8 +28,8 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
                * hover on those in a traditional way.
                */
               htmlCollection[i].focus()
-              document.getElementById(headlineId).innerText = articles[i].headline
-              document.getElementById(textId).innerText = articles[i].text
+              document.getElementById(headlineId).innerText = headline
+              document.getElementById(textId).innerHTML = text
           })
         })
       }
@@ -38,4 +39,20 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
   } catch (err) {
     throw new Error(`Something went wrong while adding event listeners to the article buttons. error: ${err}`)
   }
+}
+
+/**
+ * Prevents the show button to be focused if overlay is visible.
+ * ____
+ * 
+ * @param {object} handler 
+ * @param {HTMLElement} showButton 
+ * @param {HTMLElement} elementToFocus 
+ */
+export const preventHiddenShowButtonToBeFocused = (handler, showButton, elementToFocus) => {
+  document.addEventListener('keyup', evt => {
+    if (evt.key === 'Tab' && handler.getState() && showButton === document.activeElement) {
+      elementToFocus.focus()
+    }
+  })
 }
