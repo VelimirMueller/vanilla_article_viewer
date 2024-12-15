@@ -53,6 +53,10 @@
   position: relative;
 }
 
+.template__overlay--article:focus {
+  outline: solid 2px rgba(17, 227, 241, 0.85);
+}
+
 .template__overlay--button-list {
   display: grid;
   width: 100%;

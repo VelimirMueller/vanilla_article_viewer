@@ -1,10 +1,12 @@
 .text__article--article-headline {
   font-size: 1.85rem!important;
+  font-weight: bold;
 }
 
 .text__article--article-paragraph {
   margin-top: 0.4rem;
   font-size: 1.4rem!important;
+  font-weight: normal;
   padding-top: 10px;
   padding-right: 50px;
   overflow-x: hidden;

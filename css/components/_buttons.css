@@ -1,11 +1,11 @@
 .btn {
   border: none;
+  box-sizing: border-box;
 }
 
 .btn:focus {
   outline: none;
   border: solid 2px rgba(17, 227, 241, 0.85);
-  box-sizing: border-box;
 }
 
 .btn:hover {
@@ -14,7 +14,7 @@
 
 .btn:active {
   transition: transform 0.1s ease;
-  transform: translate(2px,2px);
+  transform: translate(2px,-2px);
 }
 
 .btn__primary {
