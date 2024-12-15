@@ -1,3 +1,5 @@
+import { debouncer } from '../utility/debouncer.js'
+
 /**
  * ### Attaches event listeners to article buttons.
  * ____
@@ -14,22 +16,35 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
   // add event listener to article buttons
   const htmlCollection = document.getElementsByClassName(className)
   const eventNames = ['focus', 'mouseover', 'click'] // make sure keyboard navigation renders the corrrect text
-  
+
   try {
     if (htmlCollection.length && htmlCollection !== null) {
+      let timer = null
+
       for (let i=0; i<articles.length; i++) {
         eventNames.forEach(evtName => {
           htmlCollection[i].addEventListener(evtName, () => {
             const { headline, text } = articles[i]
-              /**
-               * Focus hovered element and set headline and text for article wrapper.
-               * This ensures that the hovered last item remains in a visually active state.
-               * On mobile devices we need to click the button because it is not possible to
-               * hover on those in a traditional way.
-               */
-              htmlCollection[i].focus()
-              document.getElementById(headlineId).innerText = headline
-              document.getElementById(textId).innerHTML = text
+            const data = { headline, text, headlineId, textId }
+            
+            /**
+             * To prevent all hovered elements will be focused right away, a debouncer has been used here. This basically reset the setTimeout to
+             * highlight a button and display its corresponding headline and article text.
+             */
+            if (evtName === 'mouseover') { // Debounce hover selection so the hovered button will not be selected immediately.
+              if (timer) { clearTimeout(timer) }
+              timer = debouncer(() => { highlightElement(htmlCollection[i], data) }, 1000).createTimer()
+            } else if (evtName === 'click' || evtName === 'focus') { // Show article headline and text right away on click or focus events.
+              highlightElement(htmlCollection[i], data)
+            }
+            
+            /**
+             * Add a mouseleave event to clear an existing timer, so when leaving an article button it will not be selected 
+             * by executing a still ticking setTimeout().
+             */
+            htmlCollection[i].addEventListener('mouseleave', () => { 
+              if (timer) { clearTimeout(timer) }
+            })
           })
         })
       }
@@ -55,4 +70,16 @@ export const preventHiddenShowButtonToBeFocused = (handler, showButton, elementT
       elementToFocus.focus()
     }
   })
+}
+
+/**
+ * #### Helper function to hande the display of articles and highlighting of button.
+ * ____
+ * @param {HTMLElement} htmlElement
+ * @param {{headline: string, headlineId: string, text: string, textId: string }} data
+ */
+const highlightElement = (htmlElement, data) => {
+  htmlElement.focus()
+  document.getElementById(data.headlineId).innerText = data.headline
+  document.getElementById(data.textId).innerHTML = data.text
 }
