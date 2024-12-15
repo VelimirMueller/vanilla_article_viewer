@@ -41,6 +41,7 @@
 .template__overlay--articles-menu {
   grid-column: 1 / span 4;
   grid-template-columns: repeat(2, 1fr)!important;
+  overflow: visible;
 }
 
 /* article should take 8 of 12 grid columns */
@@ -53,7 +54,25 @@
 }
 
 .template__overlay--button-list {
+  display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr)!important;
+  grid-auto-rows: calc(20% - 8px)!important;
+  overflow-y: auto;
+}
+
+.template__overlay--button-list:last-child {
+  margin-bottom: -10px; /* Offset the gap */
+}
+
+/* Track */
+.template__overlay--button-list::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+/* Handle */
+.template__overlay--button-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
 }

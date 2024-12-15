@@ -25,12 +25,6 @@
   height: 100%;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr)!important;
-  grid-gap: 10px;
-}
-
 .margin-left-auto {
   margin-left: auto;
 }
