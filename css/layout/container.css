@@ -49,7 +49,7 @@
   grid-column: 5 / span 8;
   background-color: var(--primary);
   color: var(--secondary);
-  overflow: auto;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -61,6 +61,8 @@
   grid-template-columns: repeat(2, 1fr)!important;
   grid-auto-rows: calc(20% - 8px)!important;
   overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .template__overlay--button-list:last-child {
