@@ -27,13 +27,11 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
             const { headline, text } = articles[i]
             const data = { headline, text, headlineId, textId }
             
-            /**
-             * To prevent all hovered elements will be focused right away, a debouncer has been used here. This basically reset the setTimeout to
-             * highlight a button and display its corresponding headline and article text.
-             */
+            
+            // To prevent a hovered element will be focused right away, a debouncer has been used here.
             if (evtName === 'mouseover') { // Debounce hover selection so the hovered button will not be selected immediately.
               if (timer) { clearTimeout(timer) }
-              timer = debouncer(() => { highlightElement(htmlCollection[i], data) }, 1000).createTimer()
+              timer = debouncer(() => { highlightElement(htmlCollection[i], data) }, 300).createTimer()
             } else if (evtName === 'click' || evtName === 'focus') { // Show article headline and text right away on click or focus events.
               highlightElement(htmlCollection[i], data)
             }
