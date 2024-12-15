@@ -26,12 +26,13 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
           htmlCollection[i].addEventListener(evtName, () => {
             const { headline, text } = articles[i]
             const data = { headline, text, headlineId, textId }
-            
-            
+            let timer
+
             // To prevent a hovered element will be focused right away, a debouncer has been used here.
             if (evtName === 'mouseover') { // Debounce hover selection so the hovered button will not be selected immediately.
-              if (timer) { clearTimeout(timer) }
-              timer = debouncer(() => { highlightElement(htmlCollection[i], data) }, 300).createTimer()
+              if (timer) { timer.restartTimer() }
+              timer = debouncer(() => { highlightElement(htmlCollection[i], data) }, 300)
+              timer.createTimer()
             } else if (evtName === 'click' || evtName === 'focus') { // Show article headline and text right away on click or focus events.
               highlightElement(htmlCollection[i], data)
             }
@@ -41,7 +42,7 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
              * by executing a still ticking setTimeout().
              */
             htmlCollection[i].addEventListener('mouseleave', () => { 
-              if (timer) { clearTimeout(timer) }
+              if (timer) { timer.clearTimer() }
             })
           })
         })
@@ -76,7 +77,7 @@ export const preventHiddenShowButtonToBeFocused = (handler, showButton, elementT
  * @param {HTMLElement} htmlElement
  * @param {{headline: string, headlineId: string, text: string, textId: string }} data
  */
-const highlightElement = (htmlElement, data) => {
+const highlightElement = (htmlElement, data) => {  
   htmlElement.focus()
   document.getElementById(data.headlineId).innerText = data.headline
   document.getElementById(data.textId).innerHTML = data.text

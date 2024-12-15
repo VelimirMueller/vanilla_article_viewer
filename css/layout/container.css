@@ -40,7 +40,7 @@
 /* article side menu should take 4 of 12 grid columns */
 .template__overlay--articles-menu {
   grid-column: 1 / span 4;
-  grid-template-columns: repeat(2, 1fr)!important;
+  grid-template-columns: repeat(2, 1fr);
   overflow: visible;
 }
 
@@ -62,8 +62,8 @@
   width: 100%;
   height: 100%;
   grid-gap: 10px;
-  grid-template-columns: repeat(2, 1fr)!important;
-  grid-auto-rows: calc(20% - 8px)!important;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: calc(20% - 8px);
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -81,4 +81,99 @@
 /* Handle */
 .template__overlay--button-list::-webkit-scrollbar-thumb {
   background: var(--primary);
+}
+
+@media (max-width: 1650px) {
+  .template__overlay--wrapper {
+    padding: 11% 10%;
+  }
+}
+
+@media (max-width: 1250px) {
+  .template__overlay--articles-menu {
+    grid-column: 1 / span 4;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .template__overlay--button-list {
+    grid-column: 1 / span 4;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 320px) {
+  /* Styles for small phones */
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile devices in portrait mode */
+}
+
+@media (max-width: 767px) {
+  /* Styles for mobile devices in landscape mode */
+  .template__overlay--wrapper {
+    padding: 65px 10px 10px 10px;
+  }
+
+  .template__overlay--article {
+    grid-column: 1 / span 12;
+    background-color: var(--primary);
+    color: var(--secondary);
+    overflow-y: auto;
+    position: initial;
+  }
+
+  aside {
+    position: absolute;
+  }
+  .template__overlay--articles-menu {
+    grid-column: 1 / span 12;
+    background-color: rgba(20, 20, 20, 0.25);
+    width: 350px;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    overflow: visible;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 65px 10px 10px 10px;
+  }
+
+  .template__overlay--button-list {
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+  /* Styles for small tablets in portrait mode */
+  .template__overlay--wrapper {
+    padding: 65px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  /* Styles for standard tablets in portrait mode */
+  .template__overlay--wrapper {
+    padding: 65px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1024px) {
+  /* Styles for tablets in landscape mode */
+  .template__overlay--wrapper {
+    padding: 65px 15px 15px 15px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1280px) {
+  /* Styles for small laptops */
+}
+
+@media (max-width: 1600px) and (min-width: 1440px) {
+  /* Styles for medium to large laptops / small desktops */
+}
+
+@media (min-width: 1920px) {
+  /* Styles for extra large screens */
 }

@@ -32,8 +32,8 @@
   background: var(--primary);
   color: var(--secondary);
   position: absolute;
-  top: 12.5%;
-  right: 19%;
+  top: calc(10% - 15px);
+  right: calc(20% - 25px);
   transition: border-radius, background-color 0.3s ease-out;
 }
 
@@ -41,8 +41,22 @@
   background: var(--secondary);
   color: var(--primary);
   position: absolute;
-  top: 12.5%;
-  right: 19%;
+}
+
+.btn__side {
+  background: var(--primary);
+  color: var(--secondary);
+  position: absolute;
+  transition: border-radius, background-color 0.3s ease-out;
+  left: 10px;
+  top: 1%;
+  display: none;
+}
+
+.btn__side:hover { 
+  background: var(--secondary);
+  color: var(--primary);
+  position: absolute;
 }
 
 .btn__article--display-menu {
@@ -64,6 +78,7 @@
   padding: 7px;
   font-weight: bold;
   text-align: left;
+  min-height: 50px;
 }
 
 .btn__secondary--article:focus {
@@ -76,4 +91,92 @@
   background-color: var(--primary);
   color: var(--secondary);
   transition: all 200ms linear;
+}
+
+.turn {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1250px) {
+  .btn__close {
+    top: calc(9% - 15px);
+    right: calc(10% - 25px);
+  }
+}
+
+@media (max-width: 320px) {
+  /* Styles for small phones */
+  .btn__secondary--article {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile devices in portrait mode */
+  .btn__secondary--article {
+    width: 60%;
+  }
+
+  
+}
+
+@media (max-width: 767px) {
+  /* Styles for mobile devices in landscape mode */
+  .btn__side {
+    display: block;
+  }
+
+  #articles-menu, .btn__secondary--article {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+  /* Styles for small tablets in portrait mode */
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  /* Styles for standard tablets in portrait mode */
+  
+}
+
+@media (max-width: 1280px) {
+  .btn__close { /* close button has a background to make sure the contrast is of minimal ratio of 4.5:1  */
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    transition: border-radius, background-color 0.3s ease-out;
+  }
+
+  .btn__secondary--article {
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1024px) {
+  /* Styles for tablets in landscape mode */
+  .btn__close {
+    top: 1%;
+    right: 1%;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1280px) {
+  /* Styles for small laptops */
+  .btn__close {
+    top: calc(9% - 15px);
+    right: calc(10% - 25px);
+  }
+}
+
+@media (max-width: 1650px) and (min-width: 1440px) {
+  /* Styles for medium to large laptops / small desktops */
+  .btn__close {
+    top: calc(10% - 15px);
+    right: calc(10% - 25px);
+  }
+}
+
+@media (min-width: 1601px) {
+  /* Styles for extra large screens */
 }
