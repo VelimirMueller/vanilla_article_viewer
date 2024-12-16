@@ -41,14 +41,17 @@ const handleSideMenu = () => {
  * has been set. Also handles the toggling of the mobile menu if in mobile mode.
  * @param {string} mobileMenuId
  */
-export const sideMenuHandler = (mobileMenuId) => {
+export const handleSideMenuWithAria = (mobileMenuButtonId) => {
   const sideMenuHandler = handleSideMenu()
   const mediaQuery = window.matchMedia('(min-width: 768px)')
+  const menu = document.getElementById('articles-menu')
 
-  document.getElementById(mobileMenuId).addEventListener('click', () => {
+  document.getElementById(mobileMenuButtonId).addEventListener('click', () => {
     if (sideMenuHandler.getState()) {
       sideMenuHandler.hide()
+      menu.setAttribute('aria-hidden', 'true')
     } else {
+      menu.setAttribute('aria-hidden', 'false')
       sideMenuHandler.setVisible()
       sideMenuHandler.setMobileBg()
     }
@@ -59,9 +62,11 @@ export const sideMenuHandler = (mobileMenuId) => {
   mediaQuery.addEventListener('change', () => {
     if (mediaQuery.matches) {
       sideMenuHandler.setVisible()
+      menu.setAttribute('aria-hidden', 'false')
       sideMenuHandler.setLargerScreenBg()      
     } else {
       sideMenuHandler.setVisible()
+      menu.setAttribute('aria-hidden', 'false')
       sideMenuHandler.setMobileBg()
     }
   })
