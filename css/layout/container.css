@@ -37,7 +37,6 @@
 .template__overlay--articles-menu {
   grid-column: 1 / span 4;
   grid-template-columns: repeat(2, 1fr);
-  overflow-y: scroll;
 }
 
 .template__overlay--article {
