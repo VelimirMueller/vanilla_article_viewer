@@ -29,7 +29,12 @@ export const ariaHandler = (components) => {
  */
 const checkAriaAttributeValidity  = (ariaAttr) => {
   try {
-    if (!!ariaAttr && typeof ariaAttr === 'string' && ariaAttr !== '') {
+    if (
+      !!ariaAttr 
+      && typeof ariaAttr === 'string' 
+      && ariaAttr !== '' 
+      && ariaAttr.startsWith('aria')) {
+      
       return true
     } 
     
