@@ -105,10 +105,11 @@
   <script type="module" defer>
   import { 
     addArticleButtonEventListeners,
+    ariaOverlayAttributeInitializer,
     closeOnEscape,
     createArticleButtons,
     fetchArticles,
-    handleAriaStates,
+    handleOverlayWithAria,
     handleOverlay,
     preventHiddenShowButtonToBeFocused,
     sideMenuHandler
@@ -122,22 +123,14 @@
   
   const showButton = document.getElementById('article-show-button')
   const closeButton = document.getElementById('article-close-button')
+  const overlay = document.getElementById('overlay')
 
   // Set dynamic aria attributes when the overlay is shown
-  const showAttributes = [
-    { component: showButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'false' }, { ariaAttr: 'aria-inert', ariaValue: 'false' }] },
-    { component: closeButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'false' }] }
-  ]
-  
-  // Set dynamic aria attributes when the overlay is hidden
-  const hideAttributes = [
-    { component: showButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'true' }, { ariaAttr: 'aria-inert', ariaValue: 'true' }] },
-    { component: closeButton, attributes: [{ ariaAttr:  'aria-pressed', ariaValue: 'true' }] }
-  ]
+  const overlayAriaInitializer = ariaOverlayAttributeInitializer({showButton, closeButton, overlay})
 
   // Handle dynamic aria attributes for close and show button
-  handleAriaStates(overlayHandler, showButton, showAttributes)
-  handleAriaStates(overlayHandler, closeButton, hideAttributes)
+  handleOverlayWithAria(overlayHandler, showButton, overlayAriaInitializer.getShowAtributes())
+  handleOverlayWithAria(overlayHandler, closeButton, overlayAriaInitializer.getHideAtrributes())
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
   createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article text__underline--hover')
