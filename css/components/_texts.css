@@ -19,3 +19,10 @@
 .texts__close-button--colors {
   color: var(--secondary);
 }
+
+
+@media (max-width: 1024px) {
+  .text__article--article-paragraph {
+    padding-right: 10px;
+  }
+}
