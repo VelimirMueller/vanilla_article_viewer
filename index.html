@@ -132,6 +132,9 @@
   // Handle dynamic aria attributes for close and show button
   handleOverlayWithAria(overlayHandler, showButton, overlayAriaInitializer.getShowAtributes())
   handleOverlayWithAria(overlayHandler, closeButton, overlayAriaInitializer.getHideAtrributes())
+  
+  // handle mobile menu
+  handleSideMenuWithAria('article-side-menu-button')
 
   // create buttons and add them to DOM (just one DOM update for all buttons)
   createArticleButtons('article-button-container', articlesData.articles, 'btn btn__secondary btn__secondary--article text__underline--hover')
@@ -144,8 +147,6 @@
   preventHiddenShowButtonToBeFocused(overlayHandler, showButton, firstArticleButton)
   closeOnEscape(closeButton)
 
-  // handle mobile menu
-  handleSideMenuWithAria('article-side-menu-button')
 </script>
 </body>
 </html>
