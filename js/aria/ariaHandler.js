@@ -6,19 +6,17 @@
  * @param {[{component: HTMLElement, attributes: {ariaAttr: string, ariaValue: string}]} components
  */
 export const ariaHandler = (components) => {
-  console.log(components)
-  
-    if (components.length > 0) {
-      components.forEach(comp => {
-        const { component, attributes } = comp
-        attributes.forEach(attrs => {
-            const { ariaAttr, ariaValue } = attrs
-            if (checkAriaAttributeValidity(ariaAttr)) {
-                component.setAttribute(ariaAttr, ariaValue)
-            } else {
-              throw new Error(`Something went wrong when setting aria attribute: "${ariaAttr}" to "${ariaValue}" for component: ${component.id}.`)
-            }
-        })
+  if (components.length > 0) {
+    components.forEach(comp => {
+      const { component, attributes } = comp
+      attributes.forEach(attrs => {
+          const { ariaAttr, ariaValue } = attrs
+          if (checkAriaAttributeValidity(ariaAttr)) {
+              component.setAttribute(ariaAttr, ariaValue)
+          } else {
+            throw new Error(`Something went wrong when setting aria attribute: "${ariaAttr}" to "${ariaValue}" for component: ${component.id}.`)
+          }
+      })
     })
   }
 }
