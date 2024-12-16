@@ -14,7 +14,7 @@
 
 .btn:active {
   transition: transform 0.1s ease;
-  transform: translate(2px,-2px);
+  transform: translate(2px, -2px);
 }
 
 .btn__primary {
@@ -28,35 +28,27 @@
   display: flex;
 }
 
-.btn__close { /* close button has a background to make sure the contrast is of minimal ratio of 4.5:1  */
+.btn__close, .btn__side {
   background: var(--primary);
   color: var(--secondary);
   position: absolute;
-  top: calc(10% - 15px);
-  right: calc(20% - 25px);
   transition: border-radius, background-color 0.3s ease-out;
 }
 
-.btn__close:hover { 
+.btn__close {
+  top: calc(10% - 15px);
+  right: calc(20% - 25px);
+}
+
+.btn__close:hover, .btn__side:hover {
   background: var(--secondary);
   color: var(--primary);
-  position: absolute;
 }
 
 .btn__side {
-  background: var(--primary);
-  color: var(--secondary);
-  position: absolute;
-  transition: border-radius, background-color 0.3s ease-out;
   left: 10px;
   top: 1%;
   display: none;
-}
-
-.btn__side:hover { 
-  background: var(--secondary);
-  color: var(--primary);
-  position: absolute;
 }
 
 .btn__article--display-menu {
@@ -81,16 +73,10 @@
   min-height: 50px;
 }
 
-.btn__secondary--article:focus {
+.btn__secondary--article:focus, .btn__secondary--article:hover {
   background-color: var(--primary);
   color: var(--secondary);
-  transition: backgroundColor, color, 0.1s ease-in-out;
-}
-
-.btn__secondary--article:hover {
-  background-color: var(--primary);
-  color: var(--secondary);
-  transition: all 200ms linear;
+  transition: background-color, color, 0.1s ease-in-out;
 }
 
 .turn {
@@ -105,23 +91,18 @@
 }
 
 @media (max-width: 320px) {
-  /* Styles for small phones */
   .btn__secondary--article {
     width: 60%;
   }
 }
 
 @media (max-width: 480px) {
-  /* Styles for mobile devices in portrait mode */
   .btn__secondary--article {
     width: 60%;
   }
-
-  
 }
 
 @media (max-width: 767px) {
-  /* Styles for mobile devices in landscape mode */
   .btn__side {
     display: block;
   }
@@ -132,11 +113,9 @@
 }
 
 @media (max-width: 1280px) {
-  .btn__close { /* close button has a background to make sure the contrast is of minimal ratio of 4.5:1  */
-    position: absolute;
+  .btn__close {
     top: 1%;
     right: 1%;
-    transition: border-radius, background-color 0.3s ease-out;
   }
 
   .btn__secondary--article {
@@ -145,7 +124,6 @@
 }
 
 @media (max-width: 1280px) and (min-width: 1024px) {
-  /* Styles for tablets in landscape mode */
   .btn__close {
     top: 1%;
     right: 1%;
@@ -153,7 +131,6 @@
 }
 
 @media (max-width: 1440px) and (min-width: 1280px) {
-  /* Styles for small laptops */
   .btn__close {
     top: calc(9% - 15px);
     right: calc(10% - 25px);
@@ -161,7 +138,6 @@
 }
 
 @media (max-width: 1650px) and (min-width: 1440px) {
-  /* Styles for medium to large laptops / small desktops */
   .btn__close {
     top: calc(10% - 15px);
     right: calc(10% - 25px);
