@@ -19,39 +19,3 @@
 .texts__close-button--colors {
   color: var(--secondary);
 }
-
-@media (max-width: 320px) {
-  /* Styles for small phones */
-}
-
-@media (max-width: 480px) {
-  /* Styles for mobile devices in portrait mode */
-}
-
-@media (max-width: 767px) {
-  /* Styles for mobile devices in landscape mode */
-}
-
-@media (max-width: 768px) and (min-width: 600px) {
-  /* Styles for small tablets in portrait mode */
-}
-
-@media (max-width: 1024px) and (min-width: 768px) {
-  /* Styles for standard tablets in portrait mode */
-}
-
-@media (max-width: 1280px) and (min-width: 1024px) {
-  /* Styles for tablets in landscape mode */
-}
-
-@media (max-width: 1440px) and (min-width: 1280px) {
-  /* Styles for small laptops */
-}
-
-@media (max-width: 1600px) and (min-width: 1440px) {
-  /* Styles for medium to large laptops / small desktops */
-}
-
-@media (min-width: 1920px) {
-  /* Styles for extra large screens */
-}

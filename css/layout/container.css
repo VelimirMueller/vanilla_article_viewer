@@ -104,6 +104,9 @@
 
 @media (max-width: 320px) {
   /* Styles for small phones */
+  .template__overlay--articles-menu {
+    width: 300px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -126,7 +129,15 @@
 
   aside {
     position: absolute;
+    min-height: 300px;
   }
+
+  aside, .overlay , .template__overlay--content, .padding-article, .scroller {
+    min-height: 300px;
+  }
+
+
+
   .template__overlay--articles-menu {
     grid-column: 1 / span 12;
     background-color: rgba(20, 20, 20, 0.25);
@@ -164,16 +175,4 @@
   .template__overlay--wrapper {
     padding: 65px 15px 15px 15px;
   }
-}
-
-@media (max-width: 1440px) and (min-width: 1280px) {
-  /* Styles for small laptops */
-}
-
-@media (max-width: 1600px) and (min-width: 1440px) {
-  /* Styles for medium to large laptops / small desktops */
-}
-
-@media (min-width: 1920px) {
-  /* Styles for extra large screens */
 }

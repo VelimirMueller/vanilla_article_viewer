@@ -131,15 +131,6 @@
   }
 }
 
-@media (max-width: 768px) and (min-width: 600px) {
-  /* Styles for small tablets in portrait mode */
-}
-
-@media (max-width: 1024px) and (min-width: 768px) {
-  /* Styles for standard tablets in portrait mode */
-  
-}
-
 @media (max-width: 1280px) {
   .btn__close { /* close button has a background to make sure the contrast is of minimal ratio of 4.5:1  */
     position: absolute;
@@ -175,8 +166,4 @@
     top: calc(10% - 15px);
     right: calc(10% - 25px);
   }
-}
-
-@media (min-width: 1601px) {
-  /* Styles for extra large screens */
 }
