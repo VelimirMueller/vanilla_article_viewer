@@ -34,7 +34,7 @@
             <button
               id="article-close-button" 
               type="button"
-              tabindex="1"
+              tabindex="0"
               aria-controls="overlay"
               aria-label="Artikelmenü schließen"
               class="btn btn__close font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
@@ -51,7 +51,7 @@
                 <button
                   id="article-side-menu-button" 
                   type="button"
-                  tabindex="1"
+                  tabindex="0"
                   aria-controls="articles-menu"
                   aria-label="verfügbare Artikel öffnen"
                   class="btn btn__side font-xl margin-left-auto font-xl-bold margin-bot-sm square-45px">
@@ -107,11 +107,11 @@
     addArticleButtonEventListeners,
     closeOnEscape,
     createArticleButtons,
-
     fetchArticles,
     handleAriaStates,
     handleOverlay,
-    preventHiddenShowButtonToBeFocused
+    preventHiddenShowButtonToBeFocused,
+    sideMenuHandler
   } from './js/index.js'
 
   // fetch articles
@@ -149,6 +149,10 @@
   const firstArticleButton = document.getElementsByClassName('btn__secondary--article')[0]
   preventHiddenShowButtonToBeFocused(overlayHandler, showButton, firstArticleButton)
   closeOnEscape(closeButton)
-  </script>
+
+  // handle mobile menu
+  sideMenuHandler('article-side-menu-button')
+
+</script>
 </body>
 </html>
