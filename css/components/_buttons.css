@@ -115,7 +115,7 @@
 @media (max-width: 1280px) {
   .btn__close {
     top: 1%;
-    right: 1%;
+    right: 10px;
   }
 
   .btn__secondary--article {
@@ -126,7 +126,7 @@
 @media (max-width: 1280px) and (min-width: 1024px) {
   .btn__close {
     top: 1%;
-    right: 1%;
+    right: 10px;
   }
 }
 
