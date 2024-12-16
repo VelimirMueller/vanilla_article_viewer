@@ -7,7 +7,6 @@
   background-color: #fff;
 }
 
-/* default visibility of overlay is ``display: none */
 .template__overlay {
   position: absolute;
   height: 100vh;
@@ -15,7 +14,6 @@
   display: none;
 }
 
-/* add padding accordingly to absolute overlay wrapper */
 .template__overlay--wrapper {
   background-color: var(--bg-overlay);
   height: 100%;
@@ -28,7 +26,6 @@
   position: relative;
 }
 
-/* add 12 grid column layout to overlay content */
 .template__overlay--content {
   height: 100%;
   width: 100%;
@@ -37,14 +34,12 @@
   grid-gap: 10px;
 }
 
-/* article side menu should take 4 of 12 grid columns */
 .template__overlay--articles-menu {
   grid-column: 1 / span 4;
   grid-template-columns: repeat(2, 1fr);
   overflow: visible;
 }
 
-/* article should take 8 of 12 grid columns */
 .template__overlay--article {
   grid-column: 5 / span 8;
   background-color: var(--primary);
@@ -70,15 +65,13 @@
 }
 
 .template__overlay--button-list:last-child {
-  margin-bottom: -10px; /* Offset the gap */
+  margin-bottom: -10px;
 }
 
-/* Track */
 .template__overlay--button-list::-webkit-scrollbar-track {
   background: var(--secondary);
 }
 
-/* Handle */
 .template__overlay--button-list::-webkit-scrollbar-thumb {
   background: var(--primary);
 }
@@ -93,7 +86,6 @@
   .template__overlay--articles-menu {
     grid-column: 1 / span 4;
     grid-template-columns: 1fr;
-    overflow: visible;
   }
 
   .template__overlay--button-list {
@@ -103,20 +95,24 @@
 }
 
 @media (max-width: 320px) {
-  /* Styles for small phones */
   .template__overlay--articles-menu {
     width: 300px;
   }
 }
 
-@media (max-width: 480px) {
-  /* Styles for mobile devices in portrait mode */
-}
-
 @media (max-width: 767px) {
-  /* Styles for mobile devices in landscape mode */
+  .template__overlay--article,
+  .template__overlay--button-list {
+    touch-action: pan-y;
+  }
+
   .template__overlay--wrapper {
     padding: 65px 10px 10px 10px;
+    overflow: hidden;
+  }
+
+  .template__overlay--article p {
+    pointer-events: auto;
   }
 
   .template__overlay--article {
@@ -125,18 +121,19 @@
     color: var(--secondary);
     overflow-y: auto;
     position: initial;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    max-height: 100%;
+    height: calc(100vh - 65px);
   }
 
-  aside {
-    position: absolute;
+  aside,
+  .overlay,
+  .template__overlay--content,
+  .padding-article,
+  .scroller {
     min-height: 300px;
   }
-
-  aside, .overlay , .template__overlay--content, .padding-article, .scroller {
-    min-height: 300px;
-  }
-
-
 
   .template__overlay--articles-menu {
     grid-column: 1 / span 12;
@@ -144,34 +141,35 @@
     width: 350px;
     height: 100vh;
     grid-template-columns: 1fr;
-    overflow: visible;
+    overflow: auto;
     top: 0;
     left: 0;
     position: absolute;
     padding: 65px 10px 10px 10px;
+    transition: width 0.5s ease-in-out;
   }
 
   .template__overlay--button-list {
     padding-right: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 }
 
 @media (max-width: 768px) and (min-width: 600px) {
-  /* Styles for small tablets in portrait mode */
   .template__overlay--wrapper {
     padding: 65px 10px 10px 10px;
   }
 }
 
 @media (max-width: 1024px) and (min-width: 768px) {
-  /* Styles for standard tablets in portrait mode */
   .template__overlay--wrapper {
     padding: 65px 10px 10px 10px;
   }
 }
 
 @media (max-width: 1280px) and (min-width: 1024px) {
-  /* Styles for tablets in landscape mode */
   .template__overlay--wrapper {
     padding: 65px 15px 15px 15px;
   }

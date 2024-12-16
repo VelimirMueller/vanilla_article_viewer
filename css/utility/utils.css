@@ -50,3 +50,8 @@
   background-color: none;
   color: #fff;
 }
+
+.scroller {
+  overflow-y: auto;
+  touch-action: pan-y;
+}
