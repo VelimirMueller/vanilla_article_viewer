@@ -45,6 +45,7 @@
   color: var(--secondary);
   overflow-y: auto;
   position: relative;
+  word-break: keep-all;
 }
 
 .template__overlay--article:focus {
