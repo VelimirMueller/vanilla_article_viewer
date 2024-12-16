@@ -5,7 +5,7 @@
  * ___
  * @param {[{component: HTMLElement, attributes: {ariaAttr: string, ariaValue: string}]} components
  */
-const ariaOverlayHandler = (components) => {
+export const ariaHandler = (components) => {
   console.log(components)
   
     if (components.length > 0) {
@@ -39,22 +39,4 @@ const checkAriaAttributeValidity  = (ariaAttr) => {
   } catch (err) {
     throw new Error(`Could not check aria validity due to error: ${err}`)
   }
-}
-
-/**
- * Handles aria states for components with dynamic aria attributes.
- * ____
- * Needs a handler to toggle the state, the component to attach the even listener to 
- * and the aria attributes with corresponding values in "{key,value}"-paris
- * @param {Function} handler 
- * @param {HTMLElement} component 
- * @param {object[]} attributes
- */
-export const handleAriaStates = async (handler, component, attributes) => {
-  component.addEventListener('click', async () => {
-    await handler.toggleOverlay('overlay',)
-    if (handler.getState()) {
-      ariaOverlayHandler(attributes)
-    }
-  })
 }

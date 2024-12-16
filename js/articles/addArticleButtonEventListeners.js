@@ -19,8 +19,6 @@ export const addArticleButtonEventListeners = (className, articles, headlineId, 
 
   try {
     if (htmlCollection.length && htmlCollection !== null) {
-      let timer = null
-
       for (let i=0; i<articles.length; i++) {
         eventNames.forEach(evtName => {
           htmlCollection[i].addEventListener(evtName, () => {

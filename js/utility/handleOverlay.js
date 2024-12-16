@@ -1,3 +1,4 @@
+import { ariaHandler } from '../index.js'
 /**
  * ### Toggles the state of the overlay and hold the visibility state in `isOverlayVisible`.
  * Also handles `aria-pressed` and `aria-hidden` attributes for the overlay element
@@ -103,4 +104,20 @@ const setVisible = (overlay) => {
   } catch (err) {
     throw new Error(`Something went wrong while setting overlay to visible. error: ${err}`)
   }
+}
+
+/**
+ * Handles aria states for components with dynamic aria attributes.
+ * ____
+ * Needs a handler to toggle the state, the component to attach the even listener to 
+ * and the aria attributes with corresponding values in "{key,value}"-paris
+ * @param {Function} handler 
+ * @param {HTMLElement} component 
+ * @param {object[]} attributes
+ */
+export const handleOverlayWithAria = async (handler, component, attributes) => {
+  component.addEventListener('click', async () => {
+    await handler.toggleOverlay('overlay',)
+    ariaHandler(attributes)
+  })
 }
