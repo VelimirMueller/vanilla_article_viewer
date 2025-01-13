@@ -22,6 +22,7 @@ Written in plain HTML/CSS and JS.
 ____
 ### Reports
 
-![Lighthouse report](lighthouse report.png)
 
-![WAVE report]('wave_report.png')
+![WAVE report](image.png)
+
+![Lighthouse report](image-1.png)
