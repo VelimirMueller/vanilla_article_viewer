@@ -8,6 +8,7 @@ Written in plain HTML/CSS and JS.
 - Smart UI with debouncers to deliver fantastic UX
 
 
+
 #### Getting started
 
 Serve this project via a webserver or if you have docker compose installed run 
@@ -16,4 +17,11 @@ Serve this project via a webserver or if you have docker compose installed run
 
 to serve this project via http://localhost:8080
 
+
+
+### Reports
+
+
 ![Lighthouse report](image.png)
+
+![alt text](image-1.png)
