@@ -23,6 +23,6 @@ ____
 ### Reports
 
 
-![Lighthouse report](image.png)
+![Lighthouse report](lighthouse_report.png)
 
-![alt text](image-1.png)
+![WAVE report](wace_report.png)
