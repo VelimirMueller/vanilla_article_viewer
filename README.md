@@ -2,6 +2,11 @@
 
 Written in plain HTML/CSS and JS.
 
+- Fully responsive
+- Performant DOM updates with fragments
+- Dynamic ARIA-attribute handling
+- Smart UI with debouncers to deliver fantastic UX
+
 
 #### Getting started
 
