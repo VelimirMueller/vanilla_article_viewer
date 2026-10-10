@@ -7,5 +7,6 @@
   "art": {
     "file": "v2/article-viewer.png",
     "seed": 320
-  }
+  },
+  "status": "STABLE"
 }
