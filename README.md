@@ -1,13 +1,22 @@
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner/hero-v1-light.svg">
-  <img alt="article-viewer — No framework was harmed." src="assets/banner/hero-v1-dark.svg" width="100%">
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner/hero-v2-light.svg">
+  <img alt="article-viewer. No framework was harmed. Vanilla JS, HTML, CSS, ARIA. Stable." src="assets/banner/hero-v2-dark.svg" width="100%">
 </picture>
 
-![status](https://img.shields.io/badge/status-stable-10b981?style=flat-square&labelColor=0a0a0b) ![group](https://img.shields.io/badge/VM.-vlm-8b5cf6?style=flat-square&labelColor=0a0a0b) ![stack](https://img.shields.io/badge/vanilla-js-a1a1aa?style=flat-square&labelColor=0a0a0b) ![license](https://img.shields.io/badge/license-MIT-a1a1aa?style=flat-square&labelColor=0a0a0b)
+<p align="center">
+
+![status](https://img.shields.io/badge/status-stable-10b981?style=flat-square&labelColor=0a0a0b) ![group](https://img.shields.io/badge/VM.-flagship-6366f1?style=flat-square&labelColor=0a0a0b) ![stack](https://img.shields.io/badge/vanilla-js-a1a1aa?style=flat-square&labelColor=0a0a0b) ![license](https://img.shields.io/badge/license-MIT-a1a1aa?style=flat-square&labelColor=0a0a0b)
+
+</p>
 
 > No framework was harmed.
 
 ```text
+ ████   █████   ██████  ██████   █████  ██      ██████
+██  ██  ██  ██    ██      ██    ██      ██      ██
+██████  █████     ██      ██    ██      ██      █████   █████
+██  ██  ██ ██     ██      ██    ██      ██      ██
+██  ██  ██  ██    ██    ██████   █████  ██████  ██████
 ██  ██  ██████  ██████  ██   ██  ██████  █████
 ██  ██    ██    ██      ██   ██  ██      ██  ██
 ██  ██    ██    █████   ██ █ ██  █████   █████
@@ -15,35 +24,66 @@
   ██    ██████  ██████   ██ ██   ██████  ██  ██  ██
 ```
 
+A responsive article viewer in plain HTML, CSS and JS. The UI text is German.
+No build step, no dependencies. `node_modules` was not consulted.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/stats-v2-dark.svg">
+  <img alt="0 DEPENDENCIES. 0 BUILD STEPS. 10 ARTICLES. 300 ms HOVER DEBOUNCE" src="assets/readme/stats-v2-light.svg" width="100%">
+</picture>
+
+<br>
+
 ## // 01 WHAT IT DOES
 
-- Shows a list of articles in an overlay. Select an article to read its headline and text. The articles come from `data/articles.json`.
-- Fully responsive
-- Performant DOM updates with fragments
-- Dynamic ARIA-attribute handling
-- Smart UI with debouncers to deliver fantastic UX
+<img alt="01 WHAT IT DOES. SHOWS ARTICLES. THAT IS THE JOB." src="assets/readme/divider-what-v2.svg" width="100%">
 
-Written in plain HTML/CSS and JS.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/features-v2-dark.svg">
+  <img alt="PLAIN MODULES: No build step. No framework. The browser loads the ES modules directly. ONE DOM UPDATE: All article buttons are built in one DocumentFragment and inserted once. ARIA FOLLOWS: aria-hidden and inert follow the overlay and the side menu." src="assets/readme/features-v2-light.svg" width="100%">
+</picture>
 
-No build step, no dependencies, no framework: the browser loads the ES modules directly. The UI text is German.
+- Shows a list of articles in an overlay. Select an article to read its headline and text.
+- Loads the articles from `data/articles.json`.
+- Works on every screen width (fully responsive).
+- Builds the DOM with fragments, so the browser does few updates.
+- Sets ARIA attributes dynamically. Debouncers keep hover from stealing focus.
+
+<br>
 
 ## // 02 QUICK START
 
-Serve this project via a webserver or if you have docker compose installed run 
+<img alt="02 QUICK START. ONE SERVER. ANY SERVER." src="assets/readme/divider-start-v2.svg" width="100%">
 
-`docker compose build && docker compose up -d`
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/start-v2-dark.svg">
+  <img alt="Terminal: $ docker compose build && docker compose up -d | # open http://localhost:8080 | $ python3 -m http.server 8080 | # no Docker? any static server on the repo root" src="assets/readme/start-v2-light.svg" width="100%">
+</picture>
 
-to serve this project via http://localhost:8080
+With Docker Compose. Then open http://localhost:8080.
 
-Without Docker, any static server works if it serves the repo root, because the page fetches `/data/articles.json` by absolute path. For example:
+```bash
+docker compose build && docker compose up -d
+```
+
+Without Docker, use any static server on the repo root. The page fetches `/data/articles.json` by absolute path.
 
 ```sh
 python3 -m http.server 8080
 ```
 
-Opening `index.html` straight from disk (`file://`) does not work: browsers block ES modules and `fetch()` there.
+- Do not open `index.html` from disk (`file://`). Browsers block ES modules and `fetch()` there.
+
+<br>
 
 ## // 03 HOW IT WORKS
+
+<img alt="03 HOW IT WORKS. MODULES IN. ONE FRAGMENT OUT." src="assets/readme/divider-how-v2.svg" width="100%">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/flow-v2-dark.svg">
+  <img alt="index.html -> fetch() -> buttons -> #overlay. aria-hidden and inert follow the overlay. Below 768 px the list sits behind a side-menu toggle." src="assets/readme/flow-v2-light.svg" width="100%">
+</picture>
 
 ```text
   browser  ·  http://localhost:8080  (nginx:alpine)
@@ -65,6 +105,18 @@ Opening `index.html` straight from disk (`file://`) does not work: browsers bloc
   below 768 px the article list sits behind a side-menu toggle
 ```
 
+<br>
+
+## // 04 USAGE
+
+<img alt="04 USAGE. EDIT JSON. REFRESH. DONE." src="assets/readme/divider-usage-v2.svg" width="100%">
+
+### Articles
+
+- Edit `data/articles.json`. Each entry is `{ "id", "headline", "text" }`.
+- The page creates one button per entry at load time.
+- `text` goes in as HTML, so `<strong>` and `<br>` work. Put only trusted content there.
+
 ### Project layout
 
 ```text
@@ -79,26 +131,32 @@ Dockerfile            nginx:alpine image that serves the folder
 docker-compose.yml    port 8080 -> 80, mounts the folder into nginx
 ```
 
-## // 04 USAGE
-
-### Articles
-
-Edit `data/articles.json`. Each entry is `{ "id", "headline", "text" }`; one button per entry is created at load time. `text` is inserted as HTML, so `<strong>` and `<br>` work — only put trusted content there.
-
 ### Reports
 
 ![WAVE report](image.png)
 
 ![Lighthouse report](image-1.png)
 
+<br>
+
 ## // 05 STATUS
 
-| | |
-|---|---|
-| 🟢 **Stable** | finished component, no version |
-| Tests | none automated · WAVE and Lighthouse reports above |
-| License | [MIT](LICENSE) |
+<img alt="05 STATUS. FINISHED. ON PURPOSE." src="assets/readme/divider-status-v2.svg" width="100%">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/status-v2-dark.svg">
+  <img alt="Component: stable, finished, no version. Accessibility: WAVE and Lighthouse reports. Responsive: side menu below 768 px. Tests: none automated. License: MIT" src="assets/readme/status-v2-light.svg" width="100%">
+</picture>
+
+- Tests: none automated. The WAVE and Lighthouse reports are in [Reports](#reports).
+- License: [MIT](LICENSE).
+
+<br>
+
+```text
+-- EOF --------------------------------------- NO FRAMEWORKS WERE HARMED --
+```
 
 ---
 
-<sub>VM. studio / vlm · open source · look per <code>vm-brand</code> playbook</sub>
+<sub>VM. studio / flagship · open source · look per <code>vm-brand</code> playbook</sub>

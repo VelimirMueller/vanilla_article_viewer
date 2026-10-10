@@ -1,11 +1,11 @@
 {
   "$comment": "VM. studio brand manifest — see vm-brand/PLAYBOOK.md §7",
-  "group": "vlm",
+  "group": "flagship",
   "tagline": "No framework was harmed.",
   "sublabel": "VANILLA JS · HTML · CSS · ARIA",
-  "bannerVersion": "v1",
+  "bannerVersion": "v2",
   "art": {
-    "file": "vlm/vlm-v1-seed203.png",
-    "seed": 203
+    "file": "v2/article-viewer.png",
+    "seed": 320
   }
 }
