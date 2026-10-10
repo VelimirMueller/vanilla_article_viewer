@@ -145,7 +145,7 @@
   // makes article show button not focusable and focus first article button when overlay is shown
   const firstArticleButton = document.getElementsByClassName('btn__secondary--article')[0]
   preventHiddenShowButtonToBeFocused(overlayHandler, showButton, firstArticleButton)
-  closeOnEscape(closeButton)
+  closeOnEscape(closeButton, overlayHandler.getState)
 
 </script>
 </body>
