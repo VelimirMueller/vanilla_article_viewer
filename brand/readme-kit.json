@@ -1,0 +1,43 @@
+{
+  "group": "flagship",
+  "version": "v2",
+  "dividers": [
+    {"key": "what",   "index": "01", "title": "WHAT IT DOES",  "caption": "SHOWS ARTICLES. THAT IS THE JOB.", "art": "strip-flagship-1"},
+    {"key": "start",  "index": "02", "title": "QUICK START",   "caption": "ONE SERVER. ANY SERVER.",          "art": "strip-flagship-2"},
+    {"key": "how",    "index": "03", "title": "HOW IT WORKS",  "caption": "MODULES IN. ONE FRAGMENT OUT.",    "art": "strip-flagship-3"},
+    {"key": "usage",  "index": "04", "title": "USAGE",         "caption": "EDIT JSON. REFRESH. DONE.",        "art": "strip-flagship-4"},
+    {"key": "status", "index": "05", "title": "STATUS",        "caption": "FINISHED. ON PURPOSE.",            "art": "strip-flagship-5"}
+  ],
+  "panels": [
+    {"key": "stats", "type": "stats", "items": [
+      {"value": "0",      "label": "DEPENDENCIES"},
+      {"value": "0",      "label": "BUILD STEPS"},
+      {"value": "10",     "label": "ARTICLES"},
+      {"value": "300 ms", "label": "HOVER DEBOUNCE"}
+    ]},
+    {"key": "features", "type": "cards", "items": [
+      {"title": "PLAIN MODULES",  "text": "No build step. No framework. The browser loads the ES modules directly."},
+      {"title": "ONE DOM UPDATE", "text": "All article buttons are built in one DocumentFragment and inserted once."},
+      {"title": "ARIA FOLLOWS",   "text": "aria-hidden and inert follow the overlay and the side menu."}
+    ]},
+    {"key": "start", "type": "terminal", "title": "QUICK START", "lines": [
+      "$ docker compose build && docker compose up -d",
+      "# open http://localhost:8080",
+      "$ python3 -m http.server 8080",
+      "# no Docker? any static server on the repo root"
+    ]},
+    {"key": "flow", "type": "flow", "nodes": [
+      {"title": "index.html",   "sub": "module script wires it up"},
+      {"title": "fetch()",      "sub": "/data/articles.json"},
+      {"title": "buttons",      "sub": "one DocumentFragment", "hot": true},
+      {"title": "#overlay",     "sub": "click or focus shows, hover waits 300 ms"}
+    ], "caption": "aria-hidden and inert follow the overlay. Below 768 px the list sits behind a side-menu toggle."},
+    {"key": "status", "type": "status", "rows": [
+      {"label": "Component",     "value": "stable, finished, no version",   "state": "ok"},
+      {"label": "Accessibility", "value": "WAVE and Lighthouse reports",    "state": "ok"},
+      {"label": "Responsive",    "value": "side menu below 768 px",         "state": "ok"},
+      {"label": "Tests",         "value": "none automated",                 "state": "off"},
+      {"label": "License",       "value": "MIT",                            "state": "ok"}
+    ]}
+  ]
+}
