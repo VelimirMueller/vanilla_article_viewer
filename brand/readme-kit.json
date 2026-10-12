@@ -38,6 +38,70 @@
       {"label": "Responsive",    "value": "side menu below 768 px",         "state": "ok"},
       {"label": "Tests",         "value": "none automated",                 "state": "off"},
       {"label": "License",       "value": "MIT",                            "state": "ok"}
-    ]}
-  ]
+    ]},
+    {"key": "lead", "type": "lead", "title": "ABOUT", "text": "A responsive article viewer in plain HTML, CSS and JS. The UI text is German. No build step, no dependencies. `node_modules` was not consulted."},
+    {"key": "what", "type": "notes", "title": "WHAT IT DOES", "columns": 2, "items": [{"lead": "Articles in an overlay", "text": "Shows a list of articles in an overlay. Select an article to read its headline and text."}, {"lead": "One JSON file", "text": "Loads the articles from `data/articles.json`."}, {"lead": "Fully responsive", "text": "Works on every screen width."}, {"lead": "Few DOM updates", "text": "Builds the DOM with fragments, so the browser does few updates."}, {"lead": "Dynamic ARIA", "text": "Sets ARIA attributes dynamically."}, {"lead": "Debounced hover", "text": "Debouncers keep hover from stealing focus."}]},
+    {"key": "serve", "type": "notes", "title": "TWO WAYS TO SERVE IT", "items": [{"lead": "Docker Compose", "text": "Run `docker compose build && docker compose up -d`. Then open [http://localhost:8080](http://localhost:8080)."}, {"lead": "No Docker", "text": "Use any static server on the repo root, for example `python3 -m http.server 8080`. The page fetches `/data/articles.json` by absolute path."}, {"lead": "Never from disk", "text": "Do not open `index.html` from disk (`file://`). Browsers block ES modules and `fetch()` there."}]},
+    {"key": "runtime", "type": "notes", "title": "REQUEST TO SCREEN", "columns": 2, "items": [{"lead": "Browser", "text": "Opens [http://localhost:8080](http://localhost:8080), served by `nginx:alpine`. It gets `index.html`, `css/main.css` and `js/index.js` (ES modules)."}, {"lead": "Fetch", "text": "The module script in `index.html` calls `fetchArticles()`. `fetch()` reads `data/articles.json` (id, headline, text) as JSON."}, {"lead": "Buttons", "text": "`createArticleButtons()` builds all buttons in one DocumentFragment: one DOM update for all of them."}, {"lead": "#overlay", "text": "Holds an aside with the article buttons and an article with headline and text. **Alle Kategorien** opens it. The close button or Escape closes it."}, {"lead": "Focus, click, hover", "text": "Focus or click shows the article at once. Mouseover waits for a 300 ms debounce."}, {"lead": "ARIA and small screens", "text": "`aria-hidden` and `aria-inert` follow the overlay and side-menu state. Below 768 px the article list sits behind a side-menu toggle."}]},
+    {"key": "articles", "type": "notes", "title": "ARTICLES", "items": [{"lead": "Edit one file", "text": "Edit `data/articles.json`. Each entry is `{ \"id\", \"headline\", \"text\" }`."}, {"lead": "One button per entry", "text": "The page creates one button per entry at load time."}, {"lead": "Trusted HTML only", "text": "`text` goes in as HTML, so `<strong>` and `<br>` work. Put only trusted content there."}]},
+    {"key": "layout", "type": "commands", "title": "PROJECT LAYOUT", "rows": [{"cmd": "index.html", "text": "Markup + the module script that wires everything up."}, {"cmd": "data/articles.json", "text": "The articles: id, headline, text (HTML)."}, {"cmd": "js/articles/", "text": "Fetch, button factory, button event listeners."}, {"cmd": "js/aria/", "text": "ARIA attributes for the overlay and its buttons."}, {"cmd": "js/utility/", "text": "Overlay state, side menu, debouncer, Escape key."}, {"cmd": "css/", "text": "Variables, layout, components, utilities."}, {"cmd": "fonts/", "text": "Roboto Regular + Bold."}, {"cmd": "Dockerfile", "text": "`nginx:alpine` image that serves the folder."}, {"cmd": "docker-compose.yml", "text": "Port 8080 -> 80, mounts the folder into nginx."}]},
+    {"key": "checks", "type": "notes", "title": "TESTS AND LICENSE", "columns": 2, "items": [{"lead": "Tests", "text": "None automated. The WAVE and Lighthouse reports are behind the chips below."}, {"lead": "License", "text": "MIT, see `LICENSE`."}]},
+    {"key": "links", "type": "buttons", "items": [{"label": "WAVE report", "sub": "image.png", "href": "image.png"}, {"label": "Lighthouse report", "sub": "image-1.png", "href": "image-1.png"}, {"label": "License", "sub": "MIT", "href": "LICENSE"}, {"label": "Plain text", "sub": "show copyable commands"}]},
+    {"key": "footer", "type": "footer", "studio": "VM. studio / flagship", "text": "open source · look per vm-brand playbook", "eof": "-- EOF -- no frameworks were harmed --"}
+  ],
+  "readme": {
+    "hero_alt": "article-viewer. No framework was harmed. Vanilla JS, HTML, CSS, ARIA. Stable.",
+    "items": [
+      "lead",
+      "stats",
+      "divider:what",
+      "features",
+      "what",
+      "divider:start",
+      "start",
+      {
+        "details": "links",
+        "chip": 4,
+        "code": [
+          [
+            "bash",
+            "docker compose build && docker compose up -d   # then open http://localhost:8080"
+          ],
+          [
+            "sh",
+            "python3 -m http.server 8080   # no Docker: any static server on the repo root"
+          ]
+        ]
+      },
+      "serve",
+      "divider:how",
+      "flow",
+      "runtime",
+      "divider:usage",
+      "articles",
+      "layout",
+      {
+        "details": "links",
+        "chip": 4,
+        "code": [
+          [
+            "text",
+            "index.html            markup + the module script that wires everything up\ndata/articles.json    the articles: id, headline, text (HTML)\njs/articles/          fetch, button factory, button event listeners\njs/aria/              aria attributes for the overlay and its buttons\njs/utility/           overlay state, side menu, debouncer, Escape key\ncss/                  variables, layout, components, utilities\nfonts/                Roboto Regular + Bold\nDockerfile            nginx:alpine image that serves the folder\ndocker-compose.yml    port 8080 -> 80, mounts the folder into nginx"
+          ]
+        ]
+      },
+      "divider:status",
+      "status",
+      "checks",
+      {
+        "buttons": "links",
+        "only": [
+          1,
+          2,
+          3
+        ]
+      },
+      "footer"
+    ]
+  }
 }
